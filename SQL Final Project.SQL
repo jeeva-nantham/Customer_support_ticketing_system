@@ -1,5 +1,5 @@
-create database  final_project;
-USE final_project;
+create database  Customer_Support_Ticketing_System;
+USE Customer_Support_Ticketing_System;
 show tables;
 
 create table customers(
