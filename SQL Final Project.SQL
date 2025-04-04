@@ -74,7 +74,6 @@ insert into department(Department_ID,Department_Name) values
 (1003,'Account specialist'),
 (1004,'Returns & refunds');
  
-
 insert into support_agent(Agent_ID,First_Name,Last_Name,Email,Phone,Department_ID) values
 ('A01','Abisheik','Bachan','abi@outlook.com',09898761288,1001),
 ('A02','Gowtham','Ram','ramgowtham@outlook.com',09994765651,1001),
@@ -144,6 +143,7 @@ DELIMITER ;
 
 CALL InsertCustomer('C16', 'John', 'Doe', 'john.doe@gmail.com', '123-456-7890', 'New York', NOW());
 
+
 -- 2. Insert a new support agent
 DELIMITER //
 CREATE PROCEDURE InsertSupportAgent(
@@ -162,6 +162,7 @@ DELIMITER ;
 
 CALL InsertSupportAgent ('A11','Gokul','Raj','gok@gmail.com',09996787887,1004);
 
+
 -- 3. Get customer details by ID
 DELIMITER //
 CREATE PROCEDURE GetCustomerByID(IN cust_id VARCHAR(10))
@@ -169,6 +170,9 @@ BEGIN
     SELECT * FROM customers WHERE Customer_ID = cust_id;
 END //
 DELIMITER ;
+
+CALL GetCustomerByID('C09');
+
 
 -- 4. Get tickets by customer ID
 DELIMITER //
@@ -179,6 +183,7 @@ END //
 DELIMITER ;
 
 CALL GetTicketsByCustomerID('C01');
+
 
 -- 5. Get support agent details by department ID
 DELIMITER //
@@ -201,6 +206,7 @@ DELIMITER ;
 
 CALL GetCommunicationLogsForTicket('T005');
 
+
 -- 7. Get Tickets by severity level
 DELIMITER //
 CREATE PROCEDURE GetTicketsBySeverity(IN sev_level VARCHAR(45))
@@ -210,6 +216,7 @@ END //
 DELIMITER ;
 
 CALL GetTicketsBySeverity('high');
+
 
 -- 8. Get the number of tickets assigned to an agent
 DELIMITER //
@@ -221,6 +228,7 @@ DELIMITER ;
 
 CALL GetTicketCountByAgent('A07');
 
+
 -- 9. get all open tickets.
 DELIMITER //
 CREATE PROCEDURE GetOpenTickets()
@@ -231,6 +239,7 @@ DELIMITER ;
 
 CALL GetOpenTickets();
 
+
 -- 10. Get all closed tickets.
 DELIMITER //
 CREATE PROCEDURE Get_Resolved_Tickets()
@@ -240,6 +249,7 @@ END //
 DELIMITER ;
 
 CALL Get_resolved_Tickets();
+
 
 -- 11. get agent name, and department name by agent ID.
 DELIMITER //
